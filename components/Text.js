@@ -1,5 +1,5 @@
 /*
-Text looks like this. At the top level, it's an array,
+This component renders an array of "text"
 
 {
     "text": [

@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
 
+import { Text } from "../components/Text";
 import { getDatabase } from "../lib/notion";
+import { renderProperty } from "../lib/renderer";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -15,8 +17,6 @@ export default function Home({ posts }) {
       </Head>
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <div className="text-2xl">Hello</div>
-
         <ol>
           {posts.map((post) => {
             const date = new Date(post.last_edited_time).toLocaleString(
@@ -27,15 +27,22 @@ export default function Home({ posts }) {
                 year: "numeric",
               }
             );
+
+            const l = renderProperty(post.properties.Length);
+
             return (
-              <li key={post.id}>
-                <h3>
+              <li key={post.id} className="p-4">
+                <h3 className="text-2xl">
                   <Link href={`/${post.id}`}>
-                    <a>{JSON.stringify(post.properties.Name.title)}</a>
+                    <a>{renderProperty(post.properties.Name)}</a>
                   </Link>
                 </h3>
 
-                <p>{date}</p>
+                <div>
+                  Created at:
+                  {renderProperty(post.properties["Created at"])}
+                </div>
+
                 <Link href={`/${post.id}`}>
                   <a> Read post →</a>
                 </Link>
