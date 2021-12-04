@@ -55,6 +55,7 @@ export const Text = ({ text }) => {
       annotations: { bold, code, color, italic, strikethrough, underline },
       text,
     } = value;
+
     return (
       <span
         className={cx(
@@ -63,7 +64,8 @@ export const Text = ({ text }) => {
           italic ? "italic" : "",
           strikethrough ? "strikethrough" : "",
           underline ? "underline" : "",
-          color != "default" && color
+          color != "default" && color,
+          "whitespace-pre-wrap"
         )}
       >
         {text.link ? (

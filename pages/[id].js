@@ -25,7 +25,7 @@ export default function Post({ page, blocks }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="max-w-prose mx-auto font-serif px-4">
+      <main className="max-w-prose mx-auto px-4">
         <div className="text-4xl my-4 font-bold">
           {renderProperty(page.properties.Name)}
         </div>
@@ -61,16 +61,20 @@ export const getStaticProps = async (context) => {
 
   // Retrieve block children for nested blocks (one level deep), for example toggle blocks
   // https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
+
+  const getChildBlocks = async (block) => {
+    return {
+      id: block.id,
+      children: await getBlocks(block.id),
+    };
+  };
+
   const childBlocks = await Promise.all(
     blocks
-      .filter((block) => block.has_children)
-      .map(async (block) => {
-        return {
-          id: block.id,
-          children: await getBlocks(block.id),
-        };
-      })
+      .filter((block) => block.has_children && !block[block.type].children)
+      .map(getChildBlocks)
   );
+
   const blocksWithChildren = blocks.map((block) => {
     // Add child blocks if the block should contain children but none exists
     if (block.has_children && !block[block.type].children) {
