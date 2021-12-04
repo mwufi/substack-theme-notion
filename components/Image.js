@@ -12,12 +12,25 @@ function Default({ block }) {
 }
 
 export const MyImage = ({ image }) => {
+  if (!image) return null;
+
   const { type } = image;
   const value = image[type];
 
   switch (type) {
     case "file":
-      return <img src={value.url} alt="" width="100%" />;
+      return (
+        <div>
+          <img src={value.url} alt="" width="100%" />
+        </div>
+      );
+
+    case "external":
+      return (
+        <div>
+          <img src={value.url} alt="" width="100%" />
+        </div>
+      );
 
     default:
       return <Default block={image} />;

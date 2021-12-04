@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import { Text } from "../components/Text";
 import { getDatabase } from "../lib/notion";
 import { renderProperty } from "../lib/renderer";
+import { MyImage } from "../components/Image";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -15,37 +15,24 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+      <main className="flex flex-col items-center justify-center w-full flex-1 px-4 text-center">
         <ol>
           {posts.map((post) => {
-            console.log("Rendering properties!", post.properties);
-            const date = new Date(post.last_edited_time).toLocaleString(
-              "en-US",
-              {
-                month: "short",
-                day: "2-digit",
-                year: "numeric",
-              }
-            );
-
-            const l = renderProperty(post.properties.Length);
+            console.log("post", post);
 
             return (
               <li key={post.id} className="p-4">
+                <MyImage image={post.cover} />
                 <h3 className="text-2xl">
                   <Link href={`/${post.id}`}>
-                    <a>{renderProperty(post.properties.Name)}</a>
+                    <a className="hover:text-red-300 text-red-400">
+                      {renderProperty(post.properties.Name)}
+                    </a>
                   </Link>
                 </h3>
-
-                <div>
-                  Created at:
+                <div className="text-gray-400 text-sm font-light font-serif">
                   {renderProperty(post.properties["Created at"])}
                 </div>
-
-                <Link href={`/${post.id}`}>
-                  <a> Read post →</a>
-                </Link>
               </li>
             );
           })}

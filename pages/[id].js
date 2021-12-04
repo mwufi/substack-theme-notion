@@ -13,20 +13,24 @@ export default function Post({ page, blocks }) {
   console.log("Page object", page);
   console.log("Cover", page.cover);
   console.log("Properties", page.properties);
+
+  const fullTitle = page.properties.Name.title
+    .map((x) => x.plain_text)
+    .join("");
+
   return (
     <div>
       <Head>
-        <title>{page.properties.Name.title[0].plain_text}</title>
+        <title>{fullTitle}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="max-w-prose mx-auto font-serif">
+      <main className="max-w-prose mx-auto font-serif px-4">
         <div className="text-4xl my-4 font-bold">
           {renderProperty(page.properties.Name)}
         </div>
 
         {renderProperty(page.properties["Created at"])}
-        {renderProperty(page.properties.Tags)}
         {renderProperty(page.properties.Author)}
         {renderProperty(page.properties.Length)}
 
@@ -34,9 +38,7 @@ export default function Post({ page, blocks }) {
 
         <div className="flex flex-col gap-2">
           {blocks.map((block) => (
-            <Fragment key={block.id}>
-              {renderBlock(block)}
-            </Fragment>
+            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
         </div>
       </main>
