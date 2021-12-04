@@ -45,10 +45,11 @@ This component renders an array of "text"
 
 import cx from "classnames";
 
+export const SpacerParagraph = () => <div className="py-2"></div>;
+
 export const Text = ({ text }) => {
-  if (!text) {
-    return null;
-  }
+  if (!text) return null;
+
   return text.map((value) => {
     const {
       annotations: { bold, code, color, italic, strikethrough, underline },
@@ -58,7 +59,7 @@ export const Text = ({ text }) => {
       <span
         className={cx(
           bold ? "font-bold" : "",
-          code ? "font-mono" : "",
+          code ? "font-mono rounded p-1 text-sm text-red-600 bg-gray-200" : "",
           italic ? "italic" : "",
           strikethrough ? "strikethrough" : "",
           underline ? "underline" : "",
@@ -67,7 +68,7 @@ export const Text = ({ text }) => {
       >
         {text.link ? (
           <a
-            className="border-b-2 hover:border-b-4 border-red-300 transition duration-500"
+            className="border-b-2 hover:border-b-4 border-red-300 transition duration-500 text-gray-500"
             href={text.link.url}
           >
             {text.content}

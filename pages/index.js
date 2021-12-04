@@ -8,7 +8,6 @@ import { renderProperty } from "../lib/renderer";
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
 export default function Home({ posts }) {
-  console.log(posts);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -19,6 +18,7 @@ export default function Home({ posts }) {
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
         <ol>
           {posts.map((post) => {
+            console.log("Rendering properties!", post.properties);
             const date = new Date(post.last_edited_time).toLocaleString(
               "en-US",
               {

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 import { getDatabase, getPage, getBlocks } from "../lib/notion";
-import { renderBlock } from "../lib/renderer";
+import { renderBlock, renderProperty } from "../lib/renderer";
 import Link from "next/link";
 import { databaseId } from "./index.js";
 
@@ -9,9 +9,9 @@ export default function Post({ page, blocks }) {
   if (!page || !blocks) {
     return <div />;
   }
+  console.log("Url", page.url);
   console.log("Page object", page);
   console.log("Cover", page.cover);
-  console.log("Url", page.url);
   console.log("Properties", page.properties);
   return (
     <div>
@@ -20,11 +20,26 @@ export default function Post({ page, blocks }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="border">
-        {blocks.map((block) => (
-          <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-        ))}
-      </div>
+      <main className="max-w-prose mx-auto font-serif">
+        <div className="text-4xl my-4 font-bold">
+          {renderProperty(page.properties.Name)}
+        </div>
+
+        {renderProperty(page.properties["Created at"])}
+        {renderProperty(page.properties.Tags)}
+        {renderProperty(page.properties.Author)}
+        {renderProperty(page.properties.Length)}
+
+        <div className="my-8 border-t"></div>
+
+        <div className="flex flex-col gap-2">
+          {blocks.map((block) => (
+            <Fragment key={block.id}>
+              {renderBlock(block)}
+            </Fragment>
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
