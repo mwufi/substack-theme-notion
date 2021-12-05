@@ -1,9 +1,22 @@
 import { Fragment } from "react";
-import Head from "next/head";
-import { getDatabase, getPage, getBlocks } from "../lib/notion";
-import { renderBlock, renderProperty } from "../lib/renderer";
+import { getDatabase, getPage, getBlocks } from "../../lib/notion";
+import { renderBlock, renderProperty } from "../../lib/renderer";
 import Link from "next/link";
-import { databaseId } from "./index.js";
+import { databaseId } from "../index.js";
+import { MyImage } from "../../components/Image";
+import Layout from "../../components/blog/Layout";
+
+function BackgroundImage({ url }) {
+  return (
+    <div
+      className="fixed bg-cover bg-fixed h-full w-full"
+      style={{
+        zIndex: "-1",
+        backgroundImage: `url(${url})`,
+      }}
+    ></div>
+  );
+}
 
 export default function Post({ page, blocks }) {
   if (!page || !blocks) {
@@ -14,35 +27,32 @@ export default function Post({ page, blocks }) {
   console.log("Cover", page.cover);
   console.log("Properties", page.properties);
 
+  const coverUrl = page.cover?.external?.url;
+
   const fullTitle = page.properties.Name.title
     .map((x) => x.plain_text)
     .join("");
 
   return (
-    <div>
-      <Head>
-        <title>{fullTitle}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="max-w-prose mx-auto px-4">
+    <Layout title={fullTitle}>
+      <main className="h-full w-full max-w-prose p-2 md:mx-auto bg-white mt-20 font-serif">
         <div className="text-4xl my-4 font-bold">
           {renderProperty(page.properties.Name)}
         </div>
 
         {renderProperty(page.properties["Created at"])}
-        {renderProperty(page.properties.Author)}
-        {renderProperty(page.properties.Length)}
 
-        <div className="my-8 border-t"></div>
+        <div className="my-8 border-t rounded-2xl overflow-hidden">
+          <MyImage image={page.cover} />
+        </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col">
           {blocks.map((block) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }
 
