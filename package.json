@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@netlify/plugin-nextjs": "^3.9.2",
     "@notionhq/client": "^0.4.9",
     "classnames": "^2.3.1",
     "next": "latest",
