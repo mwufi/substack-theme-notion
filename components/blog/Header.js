@@ -40,6 +40,7 @@ export const Header = ({ center = true }) => {
         <div className="mr-auto"></div>
         <button
           className={cx("rounded hover:underline p-2", bg.text, bg.buttons)}
+          onClick={() => alert("Not implemented yet")}
         >
           Subscribe
         </button>

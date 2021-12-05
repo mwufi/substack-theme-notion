@@ -29,7 +29,10 @@ export function PostSummary({ post }) {
         style={{
           width: "230px",
           height: "130px",
-          backgroundImage: `url(${post.cover?.external?.url})`,
+          backgroundImage: `url(${
+            post.cover?.external?.url ||
+            "https://source.unsplash.com/random/230x130"
+          })`,
         }}
         className="overflow-hidden bg-cover rounded-2xl"
       ></div>

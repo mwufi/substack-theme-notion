@@ -9,10 +9,13 @@ export const Footer = () => {
       <div className="flex flex-col gap-1 items-center justify-center text-gray-500 text-sm">
         <div className="text-center">© 2021 Zen</div>
         <div className="mt-4 text-center">
-          <span>That was long, wasn't it? Leave me your</span>
+          <span>
+            This is where I'd tell you to subscribe to my newsletter (if I had
+            one!)
+          </span>
         </div>
         <div className="text-center">
-          <span>thoughts on </span>
+          <span>Send me a message on </span>
           <a className="underline" id="bottom" href={twitterUrl}>
             Twitter
           </a>
