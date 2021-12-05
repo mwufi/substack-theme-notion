@@ -18,7 +18,7 @@ function Posts({ posts }) {
 
 export default function Home({ posts }) {
   return (
-    <Layout title="Create Next App">
+    <Layout title="the notebook">
       <Header />
       <div className="max-w-prose w-full mx-auto">
         <div className="mt-6"></div>

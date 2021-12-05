@@ -51,7 +51,9 @@ export function PostSummary({ post }) {
           <p className="text-gray-500 font-light">
             {renderProperty(post.properties["Description"])}
           </p>
-          <p className="text-gray-500 font-light">Zen Tang</p>
+          <p className="text-gray-500 font-light">
+            {renderProperty(post.properties["Author"]) || "Zen Tang"}
+          </p>
 
           <div className="text-gray-400 text-sm font-light font-serif">
             {renderProperty(post.properties["Created at"])}
