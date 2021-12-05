@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { Footer } from "./Footer";
 
 function NewPageLink({ url }) {
   return (
@@ -13,7 +14,7 @@ function NewPageLink({ url }) {
   );
 }
 
-export default function Layout({ title, children, footer = null }) {
+export default function Layout({ title, children, footer = false }) {
   return (
     <div className="flex flex-col min-h-full">
       <Head>
@@ -23,13 +24,9 @@ export default function Layout({ title, children, footer = null }) {
 
       {children}
 
-      {!footer && (
-        <footer className="flex items-center justify-center w-full h-24 mt-12">
-          <Link href="/">
-            <a>Back to home</a>
-          </Link>
-        </footer>
-      )}
+      <div className="mt-8"></div>
+
+      <Footer />
     </div>
   );
 }

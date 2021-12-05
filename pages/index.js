@@ -1,34 +1,16 @@
-import Head from "next/head";
-import Link from "next/link";
-
 import { getDatabase } from "../lib/notion";
-import { renderProperty } from "../lib/renderer";
-import { MyImage } from "../components/Image";
 import Layout from "../components/blog/Layout";
+import { Header } from "../components/blog/Header";
+import { PostSummary } from "../components/blog/PostSummary";
+import { Footer } from "../components/blog/Footer";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
 function Posts({ posts }) {
   return (
-    <ol className="flex flex-col gap-4">
+    <ol className="flex flex-col gap-2">
       {posts.map((post) => {
-        console.log("post", post);
-
-        return (
-          <li key={post.id} className="p-4">
-            {/* <MyImage image={post.cover} /> */}
-            <h3 className="text-xl">
-              <Link href={`/posts/${post.id}`}>
-                <a className="hover:text-red-400 text-red-200">
-                  {renderProperty(post.properties.Name)}
-                </a>
-              </Link>
-            </h3>
-            <div className="text-gray-400 text-sm font-light font-serif">
-              {renderProperty(post.properties["Created at"])}
-            </div>
-          </li>
-        );
+        return <PostSummary post={post} />;
       })}
     </ol>
   );
@@ -37,21 +19,17 @@ function Posts({ posts }) {
 export default function Home({ posts }) {
   return (
     <Layout title="Create Next App">
-      <main
-        className="w-4/5 mx-auto flex-grow grid gap-1"
-        style={{
-          gridTemplateColumns: "1fr 300px",
-          gridTemplateRows: "50px 1fr",
-        }}
-      >
-        <header className="col-span-2">i live here</header>
-        <div className=" p-2 rounded-lg">
-          <Posts posts={posts} />
+      <Header />
+      <div className="max-w-prose w-full mx-auto">
+        <div className="mt-6"></div>
+        <div className="px-4">
+          <div className="mx-auto text-gray-800 p-12 border rounded-xl flex flex-col items-end gap-2">
+            <div className="text-4xl">stuff, by Zen</div>
+          </div>
         </div>
-        <div className=" p-2 rounded-lg">
-          Hi, I'm zen. i write on this blog someetimes. email: ztang230
-        </div>
-      </main>
+        <div className="mt-4"></div>
+        <Posts posts={posts} />
+      </div>
     </Layout>
   );
 }

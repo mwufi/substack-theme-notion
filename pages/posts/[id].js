@@ -5,6 +5,8 @@ import Link from "next/link";
 import { databaseId } from "../index.js";
 import { MyImage } from "../../components/Image";
 import Layout from "../../components/blog/Layout";
+import { Header } from "../../components/blog/Header";
+import { PostSummary, PostHeader } from "../../components/blog/PostSummary";
 
 function BackgroundImage({ url }) {
   return (
@@ -35,18 +37,11 @@ export default function Post({ page, blocks }) {
 
   return (
     <Layout title={fullTitle}>
-      <main className="h-full w-full max-w-prose p-2 md:mx-auto bg-white mt-20 font-serif">
-        <div className="text-4xl my-4 font-bold">
-          {renderProperty(page.properties.Name)}
-        </div>
+      <Header />
+      <main className="h-full w-full max-w-prose p-4 md:mx-auto bg-white mt-8">
+        <PostHeader post={page} />
 
-        {renderProperty(page.properties["Created at"])}
-
-        <div className="my-8 border-t rounded-2xl overflow-hidden">
-          <MyImage image={page.cover} />
-        </div>
-
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-8">
           {blocks.map((block) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
