@@ -6,13 +6,19 @@ import { MyImage } from "../Image";
 export function PostHeader({ post }) {
   return (
     <Fragment>
-      <div className="text-4xl my-4 font-bold">
+      <div className="text-4xl my-2 font-bold">
         {renderProperty(post.properties.Name)}
+      </div>
+      <div className="my-2 font-realsans text-gray-500 font-light">
+        {renderProperty(post.properties["Description"])}
       </div>
 
       {renderProperty(post.properties["Created at"])}
 
-      <div className="my-8 border-t rounded overflow-hidden">
+      <div
+        className="my-8 border-t rounded overflow-hidden"
+        style={{ maxHeight: "300px" }}
+      >
         <MyImage image={post.cover} />
       </div>
     </Fragment>
@@ -27,14 +33,15 @@ export function PostSummary({ post }) {
     >
       <div
         style={{
-          width: "230px",
+          width: "4300px",
+          maxWidth: "40%",
           height: "130px",
           backgroundImage: `url(${
             post.cover?.external?.url ||
             "https://source.unsplash.com/random/230x130"
           })`,
         }}
-        className="overflow-hidden bg-cover rounded-2xl"
+        className="overflow-hidden bg-cover rounded-2xl flex-grow"
       ></div>
       <Link href={`/posts/${post.id}`}>
         <a className="flex flex-col gap-2">
@@ -42,8 +49,7 @@ export function PostSummary({ post }) {
             {renderProperty(post.properties.Name)}
           </h3>
           <p className="text-gray-500 font-light">
-            A new weekly missive featuring the best articles and essays on
-            wildland fire and ecology
+            {renderProperty(post.properties["Description"])}
           </p>
           <p className="text-gray-500 font-light">Zen Tang</p>
 

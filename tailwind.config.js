@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Alegreya", "Helvetica", "Arial", "sans-serif"],
+      realsans: ["Helvetica", "Arial", "sans-serif"],
       serif: ['"EB Garamond"', "serif"],
     },
     extend: {},
