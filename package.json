@@ -6,7 +6,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@netlify/plugin-nextjs": "^3.9.2",
     "@notionhq/client": "^0.4.9",
     "classnames": "^2.3.1",
     "next": "latest",
@@ -14,6 +13,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.0.0-beta.13",
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4"
