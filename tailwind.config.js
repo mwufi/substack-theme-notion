@@ -7,6 +7,10 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ["Alegreya", "Helvetica", "Arial", "sans-serif"],
+      serif: ['"EB Garamond"', "serif"],
+    },
     extend: {},
   },
   variants: {

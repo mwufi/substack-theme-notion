@@ -41,7 +41,7 @@ export default function Post({ page, blocks }) {
       <main className="h-full w-full max-w-prose p-4 md:mx-auto bg-white mt-8">
         <PostHeader post={page} />
 
-        <div className="flex flex-col mt-8">
+        <div className="flex flex-col mt-8 font-serif">
           {blocks.map((block) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
