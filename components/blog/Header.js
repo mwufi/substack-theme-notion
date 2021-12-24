@@ -20,7 +20,7 @@ export const Header = ({ fixed = false }) => {
   return (
     <nav
       className={cx(
-        "flex items-center justify-center flex-wrap p-4",
+        "flex items-center justify-center flex-wrap p-4 bg-white w-full",
         bg.header,
         fixed && "fixed"
       )}

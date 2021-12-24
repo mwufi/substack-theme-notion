@@ -2,11 +2,12 @@ import { Fragment } from "react";
 import { getDatabase, getPage, getBlocks } from "../../lib/notion";
 import { renderBlock, renderProperty } from "../../lib/renderer";
 import Link from "next/link";
-import { databaseId } from "../blog.js";
 import { MyImage } from "../../components/Image";
 import Layout from "../../components/blog/Layout";
 import { Header } from "../../components/blog/Header";
 import { PostSummary, PostHeader } from "../../components/blog/PostSummary";
+
+const databaseId = process.env.NOTION_DATABASE_ID;
 
 function BackgroundImage({ url }) {
   return (

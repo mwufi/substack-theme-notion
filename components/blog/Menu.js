@@ -15,7 +15,7 @@ export default function Menu() {
       <div className="flex flex-col gap-2 p-4 border-t max-w-prose mx-auto">
         {links.map(({ href, text }) => (
           <Link href={href}>
-            <a class="text-gray-500 hover:text-red-400">{text}</a>
+            <a className="text-gray-500 hover:text-red-400">{text}</a>
           </Link>
         ))}
       </div>

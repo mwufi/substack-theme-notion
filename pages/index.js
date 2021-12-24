@@ -7,8 +7,7 @@ import { Fragment } from "react";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
-export default function Home({ posts, page }) {
-  console.log(page);
+export default function Home({ page }) {
   let { metadata, blocks } = readWithMetadata(page);
 
   return (

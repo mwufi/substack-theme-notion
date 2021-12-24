@@ -1,31 +1,27 @@
-import { getDatabase, filterByTags } from "../lib/notion";
 import Layout from "../components/blog/Layout";
 import PostList from "../components/blog/PostList";
 import { Header } from "../components/blog/Header";
-import Link from "next/link";
-import Title from "../components/blog/Title";
+import { Render } from "../lib/renderer";
+import { getPageWithPosts } from "../lib/core-helpers";
 
-export const databaseId = process.env.NOTION_DATABASE_ID;
+let blogPage = "7b45b7d15dc540c1b46974af6780d972";
 
-export default function Home({ posts }) {
+// Perfect for a box fit
+function CoverImage1({ src }) {
+  return (
+    <div className="-m-4 mb-4">
+      <img src={src} className="w-full h-48 object-cover" />
+    </div>
+  );
+}
+
+export default function Home({ posts, blocks }) {
   return (
     <Layout>
       <Header />
-      <div className="max-w-prose w-full mx-auto p-4">
-        <div className="border-red-200 border-4 p-4 mb-4">
-          <Title>All Posts</Title>
-
-          <div className="my-4 text-lg text-gray-500 text-left border-red-200">
-            I'm glad you're here! Here's the front page for everything going
-            on... Links to interesting articles. Books. Thoughts. Archive of all
-            the letters on substack (and then some). random thoughts can be
-            found at{" "}
-            <Link href="/scritches">
-              <a className="border-b-2 hover:border-b-4 border-red-300 transition duration-500 text-gray-400 text-sm">
-                {"scritches"}
-              </a>
-            </Link>
-          </div>
+      <div className="max-w-prose w-full mx-auto p-4 md:border bg-white z-0 sticky top-0">
+        <div className="mb-4">
+          <Render blocks={blocks} />
         </div>
         <PostList posts={posts} />
       </div>
@@ -33,13 +29,4 @@ export default function Home({ posts }) {
   );
 }
 
-export const getStaticProps = async () => {
-  let database = await getDatabase(databaseId);
-  database = filterByTags(database, { any: ["topic-main"] });
-
-  return {
-    props: {
-      posts: database,
-    },
-  };
-};
+export const getStaticProps = getPageWithPosts(blogPage);
