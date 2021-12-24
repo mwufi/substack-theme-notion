@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { getDatabase, getPage, getBlocks } from "../../lib/notion";
 import { renderBlock, renderProperty } from "../../lib/renderer";
 import Link from "next/link";
-import { databaseId } from "../index.js";
+import { databaseId } from "../blog.js";
 import { MyImage } from "../../components/Image";
 import Layout from "../../components/blog/Layout";
 import { Header } from "../../components/blog/Header";
@@ -38,7 +38,7 @@ export default function Post({ page, blocks }) {
   return (
     <Layout title={fullTitle}>
       <Header />
-      <main className="h-full w-full max-w-prose p-4 md:mx-auto bg-white mt-8">
+      <main className="h-full w-full max-w-prose p-4 md:mx-auto bg-white md:mt-8">
         <PostHeader post={page} />
 
         <div className="flex flex-col mt-8 font-serif">

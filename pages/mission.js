@@ -28,7 +28,7 @@ export default function Home({ posts, page }) {
 export const getStaticProps = async () => {
   const database = await getDatabase(databaseId);
 
-  const page = await getWithChildren("49207519260f498e8d53c9758810936c");
+  const page = await getWithChildren("ef96624b790543aba67b6a8f7d17e683");
 
   return {
     props: {

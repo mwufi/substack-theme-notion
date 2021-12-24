@@ -16,15 +16,13 @@ function NewPageLink({ url }) {
 
 export default function Layout({ title, children, footer = false }) {
   return (
-    <div className="flex flex-col min-h-full">
+    <div className="flex flex-col min-h-full md:gap-8">
       <Head>
         <title>{title || "Home"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {children}
-
-      <div className="mt-8"></div>
 
       <Footer />
     </div>

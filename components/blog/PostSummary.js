@@ -16,7 +16,7 @@ export function PostHeader({ post }) {
       {renderProperty(post.properties["Created at"])}
 
       <div
-        className="my-8 border-t rounded overflow-hidden"
+        className="my-8 border-t rounded overflow-hidden lg:-mx-24"
         style={{ maxHeight: "300px" }}
       >
         <MyImage image={post.cover} />
@@ -27,36 +27,35 @@ export function PostHeader({ post }) {
 
 export function PostSummary({ post }) {
   return (
-    <li
-      key={post.id}
-      className="flex gap-4 items-start hover:bg-red-50 p-4 rounded-xl"
-    >
-      <div
-        style={{
-          width: "4300px",
-          maxWidth: "40%",
-          height: "130px",
-          backgroundImage: `url(${
-            post.cover?.external?.url ||
-            "https://source.unsplash.com/random/230x130"
-          })`,
-        }}
-        className="overflow-hidden bg-cover rounded-2xl flex-grow"
-      ></div>
+    <li key={post.id}>
       <Link href={`/posts/${post.id}`}>
-        <a className="flex flex-col gap-2">
-          <h3 className="text-xl font-medium">
-            {renderProperty(post.properties.Name)}
-          </h3>
-          <p className="text-gray-500 font-light">
-            {renderProperty(post.properties["Description"])}
-          </p>
-          <p className="text-gray-500 font-light">
-            {renderProperty(post.properties["Author"]) || "Zen Tang"}
-          </p>
+        <a className="flex gap-4 items-start hover:text-red-400">
+          <div
+            style={{
+              width: "4300px",
+              maxWidth: "40%",
+              height: "130px",
+              backgroundImage: `url(${
+                post.cover?.external?.url ||
+                "https://source.unsplash.com/random/230x130"
+              })`,
+            }}
+            className="overflow-hidden bg-cover rounded-2xl flex-grow"
+          ></div>
+          <div className="flex flex-col gap-2">
+            <h3 className="text-xl font-medium">
+              {renderProperty(post.properties.Name)}
+            </h3>
+            <p className="text-gray-500 font-light">
+              {renderProperty(post.properties["Description"])}
+            </p>
+            <p className="text-gray-500 font-light">
+              {renderProperty(post.properties["Author"]) || "Zen Tang"}
+            </p>
 
-          <div className="text-gray-400 text-sm font-light font-serif">
-            {renderProperty(post.properties["Created at"])}
+            <div className="text-gray-400 text-sm font-light font-serif">
+              {renderProperty(post.properties["Created at"])}
+            </div>
           </div>
         </a>
       </Link>
