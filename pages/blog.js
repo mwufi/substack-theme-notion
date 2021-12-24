@@ -1,4 +1,4 @@
-import { getDatabase } from "../lib/notion";
+import { getDatabase, filterByStatus } from "../lib/notion";
 import Layout from "../components/blog/Layout";
 import { Header } from "../components/blog/Header";
 import { PostSummary } from "../components/blog/PostSummary";
@@ -30,7 +30,8 @@ export default function Home({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  const database = await getDatabase(databaseId);
+  let database = await getDatabase(databaseId);
+  database = filterByStatus(database, "Published");
 
   return {
     props: {
