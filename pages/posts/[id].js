@@ -1,11 +1,10 @@
 import { Fragment } from "react";
 import { getDatabase, getPage, getBlocks } from "../../lib/notion";
-import { renderBlock, renderProperty } from "../../lib/renderer";
-import Link from "next/link";
-import { MyImage } from "../../components/Image";
+import { renderBlock } from "../../lib/renderer";
+import Head from "next/head";
 import Layout from "../../components/blog/Layout";
 import { Header } from "../../components/blog/Header";
-import { PostSummary, PostHeader } from "../../components/blog/PostSummary";
+import { PostHeader } from "../../components/blog/PostSummary";
 
 const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -36,8 +35,19 @@ export default function Post({ page, blocks }) {
     .map((x) => x.plain_text)
     .join("");
 
+  const description = page.properties.Description.rich_text
+    .map((x) => x.plain_text)
+    .join("");
+
   return (
     <Layout title={fullTitle}>
+      <Head>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@flickr" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={coverUrl} />
+      </Head>
       <Header />
       <main className="h-full w-full max-w-prose p-4 md:mx-auto bg-white md:mt-8">
         <PostHeader post={page} />
