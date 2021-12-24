@@ -8,7 +8,7 @@ export const databaseId = process.env.NOTION_DATABASE_ID;
 
 export default function Home({ posts }) {
   return (
-    <Layout title="the notebook">
+    <Layout>
       <Header />
       <div className="max-w-prose w-full mx-auto p-4">
         <Title>Authors</Title>
