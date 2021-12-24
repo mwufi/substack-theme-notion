@@ -1,33 +1,28 @@
 import { getDatabase, filterByTags } from "../lib/notion";
 import Layout from "../components/blog/Layout";
+import PostList from "../components/blog/PostList";
 import { Header } from "../components/blog/Header";
-import { PostSummary } from "../components/blog/PostSummary";
+import Title from "../components/blog/Title";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
-
-function Posts({ posts }) {
-  return (
-    <ol className="flex flex-col gap-8 py-8">
-      {posts.map((post) => {
-        return <PostSummary post={post} />;
-      })}
-    </ol>
-  );
-}
 
 export default function Home({ posts }) {
   return (
     <Layout title="the notebook">
       <Header />
       <div className="max-w-prose w-full mx-auto border p-4">
-        <div className="my-4 text-6xl text-left border-r-8 border-red-200 px-3">
-          This Blog's Bones
+        <div className="border-red-200 border-4 p-4 mb-4">
+          <Title>Bones</Title>
+          <div className="my-4 text-lg text-gray-500 text-left border-red-200">
+            v. To reach the place where this blog is made! Careful there... are
+            you sure you want to know?
+          </div>
+          <div className="my-4 text-lg text-gray-500 text-left border-red-200">
+            If you want to clone this blog (or make your own), this is a good
+            place to start!
+          </div>
         </div>
-        <div className="my-4 text-lg text-gray-500 text-left border-r-8 border-red-200 px-3">
-          You've reached the place where this blog is made! Careful there... are
-          you sure you want to know?
-        </div>
-        <Posts posts={posts} />
+        <PostList posts={posts} />
       </div>
     </Layout>
   );

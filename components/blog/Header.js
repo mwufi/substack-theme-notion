@@ -1,7 +1,7 @@
 import Link from "next/link";
 import cx from "classnames";
 
-export const Header = ({ center = true }) => {
+export const Header = ({ fixed = false }) => {
   let img =
     "https://cdn.substack.com/image/fetch/w_96,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F69397e9c-4a94-4d28-a0de-54cefcb57957_256x256.png";
 
@@ -21,7 +21,8 @@ export const Header = ({ center = true }) => {
     <nav
       className={cx(
         "flex items-center justify-center flex-wrap p-4",
-        bg.header
+        bg.header,
+        fixed && "fixed"
       )}
     >
       <div className="flex items-center gap-3 md:gap-6 w-full lg:max-w-prose">
@@ -39,15 +40,15 @@ export const Header = ({ center = true }) => {
         </div>
         <div className="mr-auto"></div>
 
-        <Link href="/blog">
-          <a className={cx("font-light tracking-wide", bg.text)}>Blog</a>
-        </Link>
         <button
           className={cx("rounded hover:underline p-2", bg.text, bg.buttons)}
           onClick={() => alert("Not implemented yet")}
         >
           Subscribe
         </button>
+        <Link href="/blog">
+          <a className={cx("font-light tracking-wide", bg.text)}>Blog</a>
+        </Link>
       </div>
     </nav>
   );

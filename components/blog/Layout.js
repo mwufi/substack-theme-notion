@@ -1,20 +1,13 @@
 import Head from "next/head";
-import Link from "next/link";
 import { Footer } from "./Footer";
+import Menu from "./Menu";
 
-function NewPageLink({ url }) {
-  return (
-    <a
-      className="flex items-center justify-center bg-white p-4 rounded-lg"
-      href="/"
-      rel="noopener noreferrer"
-    >
-      Back to Home
-    </a>
-  );
-}
-
-export default function Layout({ title, children, footer = false }) {
+export default function Layout({
+  title,
+  children,
+  footer = true,
+  menu = true,
+}) {
   return (
     <div className="flex flex-col min-h-full md:gap-8">
       <Head>
@@ -22,9 +15,9 @@ export default function Layout({ title, children, footer = false }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {children}
-
-      <Footer />
+      <div className="min-h-screen">{children}</div>
+      {menu && <Menu />}
+      {footer && <Footer />}
     </div>
   );
 }
