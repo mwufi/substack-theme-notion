@@ -4,3 +4,7 @@ body,
   height: 100%;
   font-size: 18px;
 }
+
+p,div,details {
+  cursor: 'default';
+}
