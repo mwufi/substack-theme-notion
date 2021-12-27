@@ -1,29 +1,42 @@
-# Next.js + Tailwind CSS Example
+# Next.js + Tailwind CSS
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+A Notion-powered site, inspired by Substack!
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+Features (ranked by completeness)
+- **Write your content in Notion** - ✅ - You can use Notion pages for blog posts, or main pages!
+- **Render & Deploy** - ✅ - Serve a super fast site
+- **Twitter SEO** - ✅ - Displays in Twitter cards (but I need to add stuff to show in other platforms)
 
-## Preview
+Here's what it looks like (you can also visit [the site](otheradventure.com)) to see what it looks like on Mobile
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+<table>
+  <tr>
+    <th>Blog Post</th>
+    <th>List</th>
+    <th>Home Page</th>
+  </tr>
+  <tr>
+  <td>
+<img width="1058" alt="Screenshot 2021-12-27 at 14 39 16" src="https://user-images.githubusercontent.com/30219253/147505871-f21c3db2-75a1-44b3-870f-1405ee7df0d4.png">
+  </td>
+  
+  <td><img width="959" alt="Screenshot 2021-12-27 at 14 39 00" src="https://user-images.githubusercontent.com/30219253/147505981-b585c482-be48-41c4-a5b6-346a1c0de89d.png">
+  </td>
+  
+  <td><img width="964" alt="Screenshot 2021-12-27 at 14 45 26" src="https://user-images.githubusercontent.com/30219253/147506089-940b3eba-c93c-4616-9b9c-2a738f5ac905.png">
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+  </td>
+  </tr>
+  </table>
+ 
+# Getting Started
 
-## Deploy your own
+OK, poke me for a guide...
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## Todos
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+Todos
+- **Implement tag browsing**
+- **Theme switching**
+- **Comments & Interactive features**
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
