@@ -5,6 +5,8 @@ body,
   font-size: 18px;
 }
 
-p,div,details {
-  cursor: 'default';
+p,
+div,
+details {
+  cursor: default;
 }

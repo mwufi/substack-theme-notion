@@ -34,7 +34,7 @@ export const Header = ({ fixed = false }) => {
           </Link>
           <Link href="/">
             <a className={cx("font-light tracking-wide", bg.text)}>
-              The Other Adventure
+              Zen Tang
             </a>
           </Link>
         </div>
